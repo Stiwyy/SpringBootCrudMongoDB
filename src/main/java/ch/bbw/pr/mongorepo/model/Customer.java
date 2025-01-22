@@ -29,44 +29,4 @@ public class Customer {
       this.city = city;
       this.articles = articles;
    }
-
-   public void setId(String id) {
-      this.id = id;
-   }
-
-   public void setFirstName(String firstName) {
-      this.firstName = firstName;
-   }
-
-   public void setLastName(String lastName) {
-      this.lastName = lastName;
-   }
-
-   public void setCity(City city) {
-      this.city = city;
-   }
-
-   public void setArticles(List<Article> articles) {
-      this.articles = articles;
-   }
-
-   public String getId() {
-      return id;
-   }
-
-   public String getFirstName() {
-      return firstName;
-   }
-
-   public String getLastName() {
-      return lastName;
-   }
-
-   public City getCity() {
-      return city;
-   }
-
-   public List<Article> getArticles() {
-      return articles;
-   }
 }

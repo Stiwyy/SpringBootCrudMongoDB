@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
  * @version 22.1.2024
  */
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
+@RequestMapping("/customers")
 public class MainController {
 
    private final MainService mainService;
@@ -23,33 +25,33 @@ public class MainController {
       return mainService.setupUsers();
    }
 
-   @GetMapping("/getall")
+   @GetMapping
    public Iterable<Customer> getAllUsers() {
       return mainService.getAllCustomers();
    }
 
-   @GetMapping("/findbyfirstname")
-   public Customer findByName(@RequestParam String firstname) {
+   @GetMapping("/firstname/{firstname}")
+   public Customer findByFirstname(@PathVariable String firstname) {
       return mainService.findByFirstname(firstname);
    }
 
-   @GetMapping("/findbylastname")
-   public Iterable<Customer> findByLastname(@RequestParam String lastname) {
+   @GetMapping("/lastname/{lastname}")
+   public Iterable<Customer> findByLastname(@PathVariable String lastname) {
       return mainService.findByLastname(lastname);
    }
 
-   @PutMapping("/update")
-   public String updateByFirstname(@RequestParam String firstname, @RequestParam String newFirstname) {
+   @PutMapping("/update/{firstname}/{newFirstname}")
+   public String updateByFirstname(@PathVariable String firstname, @PathVariable String newFirstname) {
       return mainService.updateFirstname(firstname, newFirstname);
    }
 
-   @PutMapping("/addarticle")
-   public String addArticle(@RequestParam String firstname, @RequestParam String type, @RequestParam double prize) {
+   @PutMapping("/{firstname}/addarticle/{type}/{prize}")
+   public String addArticle(@PathVariable String firstname, @PathVariable String type, @PathVariable double prize) {
       return mainService.addArticle(firstname, type, prize);
    }
 
-   @DeleteMapping("/delete")
-   public String deleteCustomerByLastname(@RequestParam String lastname) {
+   @DeleteMapping("/delete/{lastname}")
+   public String deleteCustomerByLastname(@PathVariable String lastname) {
       return mainService.deleteByLastname(lastname);
    }
 }
